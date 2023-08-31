@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:plant_care/constants.dart';
 import 'package:image_picker/image_picker.dart';
-
+import 'package:plant_care/ui/screens/advice_page.dart';
+import 'package:plant_care/ui/screens/detail_page.dart';
 
 class ScanPage extends StatefulWidget {
   const ScanPage({Key? key}) : super(key: key);
@@ -10,126 +10,100 @@ class ScanPage extends StatefulWidget {
   State<ScanPage> createState() => _ScanPageState();
 }
 
-
 class _ScanPageState extends State<ScanPage> {
   final ImagePicker _imagePicker = ImagePicker();
-  PickedFile? _pickedImage;
+  XFile? _pickedImage;
 
   void _pickImage(ImageSource source) async {
     try {
-      _pickedImage = await _imagePicker.pickImage(source: source) as PickedFile?;
+      _pickedImage = await _imagePicker.pickImage(source: source);
       if (_pickedImage != null) {
-        // Process the image or perform scanning here
+        _showFloatingScreen();
       }
     } catch (e) {
       print('Error picking image: $e');
     }
   }
 
+  void _showFloatingScreen() {
+    showModalBottomSheet(
+      context: context,
+      builder: (BuildContext context) {
+        return Container(
+          padding: EdgeInsets.all(16.0),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              ElevatedButton(
+                onPressed: () {
+                  Navigator.pop(context); // Close the modal bottom sheet
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) =>
+                          AdvicePage(), // Navigate to AdvicePage
+                    ),
+                  );
+                },
+                child: Text('Detect Disease'),
+              ),
+              SizedBox(height: 10),
+              ElevatedButton(
+                onPressed: () {
+                  Navigator.pop(context); // Close the modal bottom sheet
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => DetailPage(
+                        plantId: 0,
+                      ), // Navigate to DetailPage
+                    ),
+                  );
+                },
+                child: Text('Plant Care'),
+              ),
+            ],
+          ),
+        );
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
-    Size size = MediaQuery.of(context).size;
-
     return Scaffold(
-      body: Stack(
-        children: [
-          Positioned(
-            top: 50,
-            left: 20,
-            right: 20,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                GestureDetector(
-                  onTap: () {
-                    Navigator.pop(context);
-                  },
-                  child: Container(
-                    height: 40,
-                    width: 40,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(25),
-                      color: Constants.primaryColor.withOpacity(.15),
-                    ),
-                    child: Icon(
-                      Icons.close,
-                      color: Constants.primaryColor,
-                    ),
-                  ),
-                ),
-                GestureDetector(
-                  onTap: () {
-                    debugPrint('favorite');
-                  },
-                  child: Container(
-                    height: 40,
-                    width: 40,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(25),
-                      color: Constants.primaryColor.withOpacity(.15),
-                    ),
-                    child: IconButton(
-                      onPressed: () {},
-                      icon: Icon(
-                        Icons.share,
-                        color: Constants.primaryColor,
-                      ),
-                    ),
-                  ),
-                ),
-              ],
+      appBar: AppBar(
+        title: Text('Image Scanner'),
+      ),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            ElevatedButton(
+              onPressed: () {
+                _pickImage(ImageSource.camera); // Open camera for scanning
+              },
+              child: Text('Scan from Camera'),
             ),
-          ),
-          Positioned(
-            top: 100,
-            right: 20,
-            left: 20,
-            child: Container(
-              width: size.width * .8,
-              height: size.height * .8,
-              padding: const EdgeInsets.all(20),
-              child: Center(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Image.asset(
-                      'assets/images/code-scan.png',
-                      height: 100,
-                    ),
-                    const SizedBox(
-                      height: 20,
-                    ),
-                    Text(
-                      'Tap to Scan',
-                      style: TextStyle(
-                        color: Constants.primaryColor.withOpacity(.80),
-                        fontWeight: FontWeight.w500,
-                        fontSize: 20,
-                      ),
-                    ),
-                    const SizedBox(
-                      height: 20,
-                    ),
-                    ElevatedButton(
-                      onPressed: () {
-                        _pickImage(ImageSource.camera); // Open camera for scanning
-                      },
-                      child: Text('Scan from Camera'),
-                    ),
-                    const SizedBox(height: 10),
-                    ElevatedButton(
-                      onPressed: () {
-                        _pickImage(ImageSource.gallery); // Pick from gallery
-                      },
-                      child: Text('Pick from Gallery'),
-                    ),
-                  ],
-                ),
+            const SizedBox(height: 10),
+            ElevatedButton(
+              onPressed: () {
+                _pickImage(ImageSource.gallery); // Pick from gallery
+              },
+              child: Text('Pick from Gallery'),
+            ),
+            // Show floating screen after image is scanned or uploaded
+            if (_pickedImage != null)
+              FutureBuilder<XFile>(
+                future: Future.value(
+                    _pickedImage), // Create a completed future with the picked image
+                builder: (BuildContext context, AsyncSnapshot<XFile> snapshot) {
+                  return Container();
+                },
               ),
-            ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

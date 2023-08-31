@@ -5,11 +5,22 @@ class AdvicePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Text(
-        'Welcome to the Advice Page!\n\nAdd your advice content here.',
-        style: TextStyle(fontSize: 18),
-        textAlign: TextAlign.center,
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Advice Page'),
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back),
+          onPressed: () {
+            Navigator.pop(context); // Navigate back to the previous screen
+          },
+        ),
+      ),
+      body: Center(
+        child: Text(
+          'Welcome to the Advice Page!\n\nAdd your advice content here.',
+          style: TextStyle(fontSize: 18),
+          textAlign: TextAlign.center,
+        ),
       ),
     );
   }
