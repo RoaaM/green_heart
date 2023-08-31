@@ -18,7 +18,7 @@ class RootPage extends StatefulWidget {
 
 class _RootPageState extends State<RootPage> {
   List<Plant> favorites = [];
-  List<Plant> myCart = [];
+  List<Plant> myAdvice = [];
 
   int _bottomNavIndex = 0;
 
@@ -27,8 +27,8 @@ class _RootPageState extends State<RootPage> {
     return [
       const HomePage(),
       FavoritePage(favoritedPlants: favorites),
-      AdvicePage(), // Use the AdvicePage widget here
-      const ProfilePage(),
+      AdvicePage(imagePath: '',), // Use the AdvicePage widget here
+      // const alarmPage(), //alarm
     ];
   }
 
@@ -37,7 +37,7 @@ class _RootPageState extends State<RootPage> {
     Icons.home,
     Icons.favorite,
     Icons.book, // Change this to the book icon
-    Icons.person, // Keep the person icon
+    Icons.alarm, // Keep the person icon
   ];
 
   // List of the pages titles
@@ -45,7 +45,7 @@ class _RootPageState extends State<RootPage> {
     'الرئيسية',
     'المفضلة',
     'ارشادات', // Update the title
-    'صفحتي',
+    'تنبيهات',
   ];
 
   @override
@@ -63,10 +63,18 @@ class _RootPageState extends State<RootPage> {
                 fontSize: 24,
               ),
             ),
-            Icon(
-              Icons.alarm,
-              color: Constants.blackColor,
-              size: 30.0,
+            Center(
+              child: IconButton(
+                icon: Icon(Icons.person),
+                color: Constants.blackColor,
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const ProfilePage()),
+                  );
+                },
+              ),
             )
           ],
         ),
@@ -109,7 +117,7 @@ class _RootPageState extends State<RootPage> {
             final List<Plant> addedToAdvicePlants = Plant.addedToAdvicePlants();
 
             favorites = favoritedPlants;
-            myCart = addedToAdvicePlants.toSet().toList();
+            myAdvice = addedToAdvicePlants.toSet().toList();
           });
         },
       ),

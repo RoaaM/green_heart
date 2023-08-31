@@ -42,7 +42,7 @@ class _ScanPageState extends State<ScanPage> {
                     context,
                     MaterialPageRoute(
                       builder: (context) =>
-                          AdvicePage(), // Navigate to AdvicePage
+                          AdvicePage(imagePath: _pickedImage!.path),
                     ),
                   );
                 },

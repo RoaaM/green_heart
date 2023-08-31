@@ -9,93 +9,108 @@ class ProfilePage extends StatelessWidget {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
-        body: SingleChildScrollView(
-      child: Container(
-        padding: const EdgeInsets.all(16),
-        height: size.height,
-        width: size.width,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Container(
-              width: 150,
-              child: const CircleAvatar(
-                radius: 60,
-                backgroundImage: ExactAssetImage('assets/images/profile.jpg'),
-              ),
-              decoration: BoxDecoration(
-                shape: BoxShape.circle,
-                border: Border.all(
-                  color: Constants.primaryColor.withOpacity(.5),
-                  width: 5.0,
+      body: SingleChildScrollView(
+        child: Container(
+          padding: const EdgeInsets.all(16),
+          height: size.height,
+          width: size.width,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              AppBar(
+                title: Text(
+                  'صفحتي',
+                  style: TextStyle(color: Colors.white),
+                ),
+                backgroundColor: Color.fromARGB(255, 47, 115, 49),
+                leading: IconButton(
+                  icon: Icon(Icons.arrow_back),
+                  onPressed: () => Navigator.pop(context),
                 ),
               ),
-            ),
-            const SizedBox(
-              height: 10,
-            ),
-            SizedBox(
-              width: size.width * .3,
-              child: Row(
-                children: [
-                  Text(
-                    'John Doe',
-                    style: TextStyle(
-                      color: Constants.blackColor,
-                      fontSize: 20,
+              Container(
+                width: 150,
+                child: const CircleAvatar(
+                  radius: 60,
+                  backgroundImage: ExactAssetImage('assets/images/profile.jpg'),
+                ),
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  border: Border.all(
+                    color: Constants.primaryColor.withOpacity(.5),
+                    width: 5.0,
+                  ),
+                ),
+              ),
+              const SizedBox(
+                height: 10,
+              ),
+              SizedBox(
+                width: size.width * 0.8, // Adjusted width
+                child: Row(
+                  mainAxisAlignment:
+                      MainAxisAlignment.center, // Center content horizontally
+                  children: [
+                    Text(
+                      'John Doe',
+                      style: TextStyle(
+                        color: Constants.blackColor,
+                        fontSize: 20,
+                      ),
                     ),
-                  ),
-                  SizedBox(
+                    SizedBox(
                       height: 24,
-                      child: Image.asset("assets/images/verified.png")),
-                ],
+                      child: Image.asset("assets/images/verified.png"),
+                    ),
+                  ],
+                ),
               ),
-            ),
-            Text(
-              'johndoe@gmail.com',
-              style: TextStyle(
-                color: Constants.blackColor.withOpacity(.3),
+              Text(
+                'johndoe@gmail.com',
+                style: TextStyle(
+                  color: Constants.blackColor.withOpacity(.3),
+                ),
               ),
-            ),
-            const SizedBox(
-              height: 30,
-            ),
-            SizedBox(
-              height: size.height * .7,
-              width: size.width,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: const [
-                  ProfileWidget(
-                    icon: Icons.person,
-                    title: 'My Profile',
-                  ),
-                  ProfileWidget(
-                    icon: Icons.settings,
-                    title: 'Settings',
-                  ),
-                  ProfileWidget(
-                    icon: Icons.notifications,
-                    title: 'Notifications',
-                  ),
-                  ProfileWidget(
-                    icon: Icons.chat,
-                    title: 'FAQs',
-                  ),
-                  ProfileWidget(
-                    icon: Icons.share,
-                    title: 'Share',
-                  ),
-                  ProfileWidget(
-                    icon: Icons.logout,
-                    title: 'Log Out',
-                  ),
-                ],
+              const SizedBox(
+                height: 30,
               ),
-            ),
-          ],
+              SizedBox(
+                height: size.height * 0.5,
+                width: size.width,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: const [
+                    ProfileWidget(
+                      icon: Icons.person,
+                      title: 'My Profile',
+                    ),
+                    ProfileWidget(
+                      icon: Icons.settings,
+                      title: 'Settings',
+                    ),
+                    ProfileWidget(
+                      icon: Icons.notifications,
+                      title: 'Notifications',
+                    ),
+                    ProfileWidget(
+                      icon: Icons.chat,
+                      title: 'FAQs',
+                    ),
+                    ProfileWidget(
+                      icon: Icons.share,
+                      title: 'Share',
+                    ),
+                    ProfileWidget(
+                      icon: Icons.logout,
+                      title: 'Log Out',
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
         ),
       ),
-    ));
+    );
   }
 }
