@@ -1,6 +1,6 @@
 import 'dart:io';
-
 import 'package:flutter/material.dart';
+import 'package:plant_care/constants.dart';
 
 class AdvicePage extends StatelessWidget {
   final String imagePath;
@@ -53,7 +53,7 @@ class AdvicePage extends StatelessWidget {
       margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        color: Color.fromARGB(255, 188, 190, 188),
+        color: Constants.primaryColor.withOpacity(.1),
         borderRadius: BorderRadius.circular(12),
         boxShadow: [
           BoxShadow(

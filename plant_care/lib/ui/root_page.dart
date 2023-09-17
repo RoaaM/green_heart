@@ -4,10 +4,11 @@ import 'package:plant_care/constants.dart';
 import 'package:plant_care/models/plants.dart';
 import 'package:plant_care/ui/scan_page.dart';
 import 'package:plant_care/ui/screens/favorite_page.dart';
-import 'package:plant_care/ui/screens/home_page.dart';
 import 'package:plant_care/ui/screens/profile_page.dart';
-import 'package:plant_care/ui/screens/advice_page.dart'; // Import the advice page
+import 'package:plant_care/ui/screens/advice_page.dart';
+import 'package:plant_care/ui/screens/alarm.dart'; // Import the alarm page
 import 'package:page_transition/page_transition.dart';
+import 'package:plant_care/ui/screens/home_page.dart';
 
 class RootPage extends StatefulWidget {
   const RootPage({Key? key}) : super(key: key);
@@ -27,8 +28,8 @@ class _RootPageState extends State<RootPage> {
     return [
       const HomePage(),
       FavoritePage(favoritedPlants: favorites),
-      AdvicePage(imagePath: '',), // Use the AdvicePage widget here
-      // const alarmPage(), //alarm
+      AdvicePage(imagePath: ''),
+      NotificationPage(), // Use the AlarmPage widget here
     ];
   }
 
@@ -36,15 +37,15 @@ class _RootPageState extends State<RootPage> {
   List<IconData> iconList = [
     Icons.home,
     Icons.favorite,
-    Icons.book, // Change this to the book icon
-    Icons.alarm, // Keep the person icon
+    Icons.book,
+    Icons.alarm, // Keep the alarm icon
   ];
 
   // List of the pages titles
   List<String> titleList = [
     'الرئيسية',
     'المفضلة',
-    'ارشادات', // Update the title
+    'ارشادات',
     'تنبيهات',
   ];
 
