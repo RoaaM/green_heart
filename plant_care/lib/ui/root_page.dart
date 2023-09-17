@@ -9,6 +9,7 @@ import 'package:plant_care/ui/screens/advice_page.dart';
 import 'package:plant_care/ui/screens/alarm.dart'; // Import the alarm page
 import 'package:page_transition/page_transition.dart';
 import 'package:plant_care/ui/screens/home_page.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart'; 
 
 class RootPage extends StatefulWidget {
   const RootPage({Key? key}) : super(key: key);
@@ -28,7 +29,7 @@ class _RootPageState extends State<RootPage> {
     return [
       const HomePage(),
       FavoritePage(favoritedPlants: favorites),
-      AdvicePage(imagePath: ''),
+      AdvicePage(),
       NotificationPage(), // Use the AlarmPage widget here
     ];
   }
@@ -56,6 +57,12 @@ class _RootPageState extends State<RootPage> {
         title: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
+            Icon(
+            FontAwesomeIcons.plantWilt, // Replace 'iconName' with the icon you want to use
+            color: Constants.primaryColor,
+            size: 24,
+          ),
+          SizedBox(width: 8), 
             Text(
               titleList[_bottomNavIndex],
               style: TextStyle(
@@ -91,7 +98,7 @@ class _RootPageState extends State<RootPage> {
           Navigator.push(
             context,
             PageTransition(
-              child: const ScanPage(),
+              child: ScanPage(),
               type: PageTransitionType.bottomToTop,
             ),
           );
@@ -115,10 +122,8 @@ class _RootPageState extends State<RootPage> {
           setState(() {
             _bottomNavIndex = index;
             final List<Plant> favoritedPlants = Plant.getFavoritedPlants();
-            final List<Plant> addedToAdvicePlants = Plant.addedToAdvicePlants();
 
             favorites = favoritedPlants;
-            myAdvice = addedToAdvicePlants.toSet().toList();
           });
         },
       ),

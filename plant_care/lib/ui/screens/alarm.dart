@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:plant_care/constants.dart';
 
 void main() {
   runApp(MyApp());
@@ -28,9 +29,10 @@ class BasePage extends StatelessWidget {
       appBar: AppBar(),
       bottomNavigationBar: BottomNavigationBar(
         backgroundColor: Color(0xFFD9EBD2), // لون الخلفية المرغوب (D9EBD2)
-        selectedItemColor:
-            Color(0xff000000), // لون العناصر المحددة (النص والأيقونات)
-        unselectedItemColor: Color(0xff000000), // لون العناصر غير المحددة
+        selectedItemColor: Color.fromARGB(
+            209, 82, 81, 81), // لون العناصر المحددة (النص والأيقونات)
+        unselectedItemColor:
+            Color.fromARGB(209, 82, 81, 81), // لون العناصر غير المحددة
         selectedLabelStyle: TextStyle(
           fontWeight:
               FontWeight.bold, // جعل النص أغمق للعناصر المحددة وغير المحددة
@@ -84,55 +86,72 @@ class NotificationPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: ListView.builder(
-        itemCount: plantNames.length,
-        itemBuilder: (BuildContext context, int index) {
-          return GestureDetector(
-            onTap: () {
-              _showPlantDetails(context, index);
-            },
-            child: Container(
-              padding: EdgeInsets.all(16),
-              child: Row(
-                children: [
-                  Icon(
-                    _getPlantIcon(index),
-                    size: 64,
-                    color: Colors.green,
-                  ),
-                  SizedBox(width: 16),
-                  Expanded(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          plantNames[index],
-                          style: TextStyle(
-                            fontSize: 24,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                        SizedBox(height: 8),
-                        Text(
-                          'تفاصيل إضافية عن النبات', // يمكنك تعديل هذا النص
-                          style: TextStyle(
-                            fontSize: 16,
-                            color: Colors.grey,
-                          ),
-                        ),
-                      ],
+      body: Padding(
+        padding: const EdgeInsets.only(top: 8.0), // Add top padding here
+        child: ListView.builder(
+          itemCount: plantNames.length,
+          itemBuilder: (BuildContext context, int index) {
+            return GestureDetector(
+              onTap: () {
+                _showPlantDetails(context, index);
+              },
+              child: Container(
+                width: MediaQuery.of(context).size.width -
+                    32, // Width of the screen minus padding
+                margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                padding: const EdgeInsets.all(16),
+                decoration: BoxDecoration(
+                  color: Constants.primaryColor.withOpacity(.1),
+                  borderRadius: BorderRadius.circular(12),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.grey.withOpacity(0.3),
+                      spreadRadius: 2,
+                      blurRadius: 5,
+                      offset:
+                          Offset(0, 3), // Offset in the y-direction for shadow
                     ),
-                  ),
-                  Icon(
-                    Icons.arrow_forward_ios,
-                    size: 32,
-                    color: Colors.blue,
-                  ),
-                ],
+                  ],
+                ),
+                child: Row(
+                  children: [
+                    Icon(
+                      _getPlantIcon(index),
+                      size: 64,
+                      color: Constants.primaryColor,
+                    ),
+                    SizedBox(width: 16),
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            plantNames[index],
+                            style: TextStyle(
+                              color: Color.fromARGB(209, 82, 81, 81),
+                              fontSize: 24,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          SizedBox(height: 8),
+                          Text(
+                            'تفاصيل إضافية عن النبات', // يمكنك تعديل هذا النص
+                            style: TextStyle(
+                              fontSize: 16,
+                              color: Color.fromARGB(209, 82, 81, 81),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    Icon(Icons.arrow_forward_ios,
+                        size: 32, color: Constants.primaryColor),
+                  ],
+                ),
               ),
-            ),
-          );
-        },
+            );
+          },
+        ),
       ),
     );
   }
@@ -176,6 +195,7 @@ class PlantDetailsPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text('تفاصيل التنبيه'),
+        backgroundColor: Constants.primaryColor,
       ),
       body: Center(
         child: Column(
@@ -184,7 +204,7 @@ class PlantDetailsPage extends StatelessWidget {
             Icon(
               Icons.nature_people,
               size: 100,
-              color: Colors.green,
+              color: Constants.primaryColor,
             ),
             SizedBox(height: 20),
             Text(

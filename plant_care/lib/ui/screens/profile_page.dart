@@ -22,7 +22,7 @@ class ProfilePage extends StatelessWidget {
                   'صفحتي',
                   style: TextStyle(color: Colors.white),
                 ),
-                backgroundColor: Color.fromARGB(255, 47, 115, 49),
+                backgroundColor: Constants.primaryColor,
                 leading: IconButton(
                   icon: Icon(Icons.arrow_back),
                   onPressed: () => Navigator.pop(context),
@@ -32,7 +32,7 @@ class ProfilePage extends StatelessWidget {
                 width: 150,
                 child: const CircleAvatar(
                   radius: 60,
-                  backgroundImage: ExactAssetImage('assets/images/profile.jpg'),
+                  backgroundImage: ExactAssetImage('assets/images/man_profile.jpeg'),
                 ),
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,

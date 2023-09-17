@@ -25,6 +25,7 @@ INJECTED from /home/roaa/Documents/roaa_workspace/green_heart/plant_care/android
 MERGED from /home/roaa/Documents/roaa_workspace/green_heart/plant_care/android/app/src/main/AndroidManifest.xml:1:1-33:12
 MERGED from [:image_picker_android] /home/roaa/Documents/roaa_workspace/green_heart/plant_care/build/image_picker_android/intermediates/merged_manifest/debug/AndroidManifest.xml:2:1-21:12
 MERGED from [:flutter_plugin_android_lifecycle] /home/roaa/Documents/roaa_workspace/green_heart/plant_care/build/flutter_plugin_android_lifecycle/intermediates/merged_manifest/debug/AndroidManifest.xml:2:1-9:12
+MERGED from [:path_provider_android] /home/roaa/Documents/roaa_workspace/green_heart/plant_care/build/path_provider_android/intermediates/merged_manifest/debug/AndroidManifest.xml:2:1-9:12
 MERGED from [androidx.fragment:fragment:1.1.0] /home/roaa/.gradle/caches/transforms-3/75f94412898c7559d34d7edbbeaeb394/transformed/fragment-1.1.0/AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.activity:activity:1.7.2] /home/roaa/.gradle/caches/transforms-3/a82db410cebe27c9879106e746eca4ec/transformed/jetified-activity-1.7.2/AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.window:window-java:1.0.0-beta04] /home/roaa/.gradle/caches/transforms-3/ae81e06d24c799147c26814497a2a305/transformed/jetified-window-java-1.0.0-beta04/AndroidManifest.xml:17:1-23:12
@@ -73,6 +74,8 @@ MERGED from [:image_picker_android] /home/roaa/Documents/roaa_workspace/green_he
 MERGED from [:image_picker_android] /home/roaa/Documents/roaa_workspace/green_heart/plant_care/build/image_picker_android/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-7:41
 MERGED from [:flutter_plugin_android_lifecycle] /home/roaa/Documents/roaa_workspace/green_heart/plant_care/build/flutter_plugin_android_lifecycle/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-7:41
 MERGED from [:flutter_plugin_android_lifecycle] /home/roaa/Documents/roaa_workspace/green_heart/plant_care/build/flutter_plugin_android_lifecycle/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-7:41
+MERGED from [:path_provider_android] /home/roaa/Documents/roaa_workspace/green_heart/plant_care/build/path_provider_android/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-7:41
+MERGED from [:path_provider_android] /home/roaa/Documents/roaa_workspace/green_heart/plant_care/build/path_provider_android/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-7:41
 MERGED from [androidx.fragment:fragment:1.1.0] /home/roaa/.gradle/caches/transforms-3/75f94412898c7559d34d7edbbeaeb394/transformed/fragment-1.1.0/AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.fragment:fragment:1.1.0] /home/roaa/.gradle/caches/transforms-3/75f94412898c7559d34d7edbbeaeb394/transformed/fragment-1.1.0/AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.activity:activity:1.7.2] /home/roaa/.gradle/caches/transforms-3/a82db410cebe27c9879106e746eca4ec/transformed/jetified-activity-1.7.2/AndroidManifest.xml:20:5-44

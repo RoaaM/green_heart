@@ -1,55 +1,61 @@
-import 'dart:io';
+import 'dart:math'; // Import the dart:math library
 import 'package:flutter/material.dart';
 import 'package:plant_care/constants.dart';
+import 'package:plant_care/models/disease.dart';
 
 class AdvicePage extends StatelessWidget {
-  final String imagePath;
+  Disease _randomDisease = getRandomDisease();
 
-  const AdvicePage({Key? key, required this.imagePath}) : super(key: key);
+// Get a random disease
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: SingleChildScrollView(
-        child: Column(
-          children: [
-            _buildHeader('اسم المرض', 'assets/images/advice_image.jpg'),
-            SizedBox(height: 30),
-            _buildSection(
-                context, 'نبذة عن المرض', 'Add your overview content here.'),
-            _buildSection(
-                context, 'الاعراض المحتملة', 'Add your symptoms content here.'),
-            _buildSection(
-                context, 'طريقة العلاج', 'Add your treatment content here.'),
-          ],
+        child: Center(
+          child: Column(
+            children: [
+              SizedBox(
+                height: 20,
+              ),
+              _buildHeader(_randomDisease.diseaseName, _randomDisease.imageURL),
+              SizedBox(height: 30),
+              _buildSection(context, 'نبذة عن المرض', _randomDisease.overview),
+              _buildSection(
+                  context, 'الاعراض المحتملة', _randomDisease.symptoms),
+              _buildSection(context, 'طريقة العلاج', _randomDisease.treatment),
+            ],
+          ),
         ),
       ),
     );
   }
 
-  Widget _buildHeader(String name, String imagePath) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-      child: Row(
-        children: [
-          CircleAvatar(
-            radius: 80,
-            backgroundImage: FileImage(File(imagePath)),
-          ),
-          SizedBox(width: 16),
-          Text(
+Widget _buildHeader(String name, String imagePath) {
+  return Padding(
+    padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+    child: Row(
+      children: [
+        CircleAvatar(
+          radius: 80,
+          backgroundImage: AssetImage(imagePath),
+        ),
+        SizedBox(width: 16),
+        Expanded( // Add Expanded widget to force the text to fit
+          child: Text(
             name,
             style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
           ),
-        ],
-      ),
-    );
-  }
+        ),
+      ],
+    ),
+  );
+}
+
 
   Widget _buildSection(BuildContext context, String title, String content) {
     return Container(
-      width: MediaQuery.of(context).size.width -
-          32, // Width of the screen minus padding
+      width: MediaQuery.of(context).size.width - 32,
       margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
@@ -60,7 +66,7 @@ class AdvicePage extends StatelessWidget {
             color: Colors.grey.withOpacity(0.3),
             spreadRadius: 2,
             blurRadius: 5,
-            offset: Offset(0, 3), // Offset in the y-direction for shadow
+            offset: Offset(0, 3),
           ),
         ],
       ),
@@ -79,5 +85,12 @@ class AdvicePage extends StatelessWidget {
         ],
       ),
     );
+  }
+
+  // Method to get a random disease
+  static Disease getRandomDisease() {
+    final random = Random();
+    final randomIndex = random.nextInt(Disease.DiseaseList.length);
+    return Disease.DiseaseList[randomIndex];
   }
 }

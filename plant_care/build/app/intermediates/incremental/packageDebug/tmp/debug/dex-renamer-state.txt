@@ -1,4 +1,4 @@
-#Sat Sep 02 20:07:50 EET 2023
+#Sun Sep 17 12:33:38 EET 2023
 base.0=/home/roaa/Documents/roaa_workspace/green_heart/plant_care/build/app/intermediates/dex/debug/mergeDexDebug/classes.dex
 path.0=classes.dex
 renamed.0=classes.dex

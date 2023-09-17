@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:plant_care/constants.dart';
 import 'package:plant_care/models/plants.dart';
+import 'package:plant_care/ui/screens/home_page.dart';
 
 class DetailPage extends StatefulWidget {
   final int plantId;
@@ -105,22 +106,18 @@ class _DetailPageState extends State<DetailPage> {
                     top: 10,
                     right: 0,
                     child: SizedBox(
-                      height: 200,
+                      height: 150,
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           PlantFeature(
-                            title: 'Size',
-                            plantFeature: _plantList[widget.plantId].size,
-                          ),
-                          PlantFeature(
-                            title: 'Humidity',
+                            title: 'الرطوبة',
                             plantFeature:
                                 _plantList[widget.plantId].humidity.toString(),
                           ),
                           PlantFeature(
-                            title: 'Temperature',
+                            title: 'الحرارة',
                             plantFeature:
                                 _plantList[widget.plantId].temperature,
                           ),
@@ -168,23 +165,6 @@ class _DetailPageState extends State<DetailPage> {
                           const SizedBox(
                             height: 10,
                           ),
-                          
-                        ],
-                      ),
-                      Row(
-                        children: [
-                          Text(
-                            _plantList[widget.plantId].rating.toString(),
-                            style: TextStyle(
-                              fontSize: 30.0,
-                              color: Constants.primaryColor,
-                            ),
-                          ),
-                          Icon(
-                            Icons.star,
-                            size: 30.0,
-                            color: Constants.primaryColor,
-                          ),
                         ],
                       ),
                     ],
@@ -212,59 +192,46 @@ class _DetailPageState extends State<DetailPage> {
       floatingActionButton: SizedBox(
         width: size.width * .9,
         height: 50,
-        child: Row(
-          children: [
-            Container(
-              height: 50,
-              width: 50,
-              child: IconButton(onPressed: (){
-                setState(() {
-                  bool isSelected = toggleIsSelected(_plantList[widget.plantId].isSelected);
-
-                  _plantList[widget.plantId].isSelected = isSelected;
-                });
-              }, icon: Icon(
-                Icons.book,
-                color: _plantList[widget.plantId].isSelected == true ? Colors.white : Constants.primaryColor,
-              )),
-              decoration: BoxDecoration(
-                  color: _plantList[widget.plantId].isSelected == true ? Constants.primaryColor.withOpacity(.5) : Colors.white,
-                  borderRadius: BorderRadius.circular(50),
-                  boxShadow: [
-                    BoxShadow(
-                      offset: const Offset(0, 1),
-                      blurRadius: 5,
-                      color: Constants.primaryColor.withOpacity(.3),
-                    ),
-                  ]),
-            ),
-            const SizedBox(
-              width: 20,
-            ),
-            Expanded(
-              child: Container(
-                decoration: BoxDecoration(
-                    color: Constants.primaryColor,
-                    borderRadius: BorderRadius.circular(10),
-                    boxShadow: [
-                      BoxShadow(
-                        offset: const Offset(0, 1),
-                        blurRadius: 5,
-                        color: Constants.primaryColor.withOpacity(.3),
-                      )
-                    ]),
-                child: const Center(
-                  child: Text(
-                    'معرفة المزيد',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 20.0,
+        child: FloatingActionButton(
+          onPressed: () {
+            // go to home page
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => HomePage(),
+              ),
+            );
+          },
+          child: Row(
+            children: [
+              const SizedBox(
+                width: 20,
+              ),
+              Expanded(
+                child: Container(
+                  decoration: BoxDecoration(
+                      color: Constants.primaryColor,
+                      borderRadius: BorderRadius.circular(10),
+                      boxShadow: [
+                        BoxShadow(
+                          offset: const Offset(0, 1),
+                          blurRadius: 5,
+                          color: Constants.primaryColor.withOpacity(.3),
+                        )
+                      ]),
+                  child: const Center(
+                    child: Text(
+                      'تم',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 20.0,
+                      ),
                     ),
                   ),
                 ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

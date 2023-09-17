@@ -32,15 +32,17 @@ class SignIn extends StatelessWidget {
               const SizedBox(
                 height: 30,
               ),
-              const CustomTextfield(
+              CustomTextfield(
                 obscureText: false,
                 hintText: 'Enter Email',
                 icon: Icons.alternate_email,
+                controller: TextEditingController(),
               ),
-              const CustomTextfield(
+              CustomTextfield(
                 obscureText: true,
                 hintText: 'Enter Password',
                 icon: Icons.lock,
+                controller: TextEditingController(),
               ),
               const SizedBox(
                 height: 10,

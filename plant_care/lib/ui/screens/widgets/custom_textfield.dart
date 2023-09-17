@@ -8,7 +8,7 @@ class CustomTextfield extends StatelessWidget {
   final String hintText;
 
   const CustomTextfield({
-    Key? key, required this.icon, required this.obscureText, required this.hintText,
+    Key? key, required this.icon, required this.obscureText, required this.hintText, required TextEditingController controller,
   }) : super(key: key);
 
   @override

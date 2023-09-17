@@ -30,17 +30,20 @@ class SignUp extends StatelessWidget {
               const SizedBox(
                 height: 30,
               ),
-              const CustomTextfield(
+              CustomTextfield(
+                controller: TextEditingController(),
                 obscureText: false,
                 hintText: 'Enter Email',
                 icon: Icons.alternate_email,
               ),
-              const CustomTextfield(
+              CustomTextfield(
+                controller: TextEditingController(),
                 obscureText: false,
                 hintText: 'Enter Full name',
                 icon: Icons.person,
               ),
-              const CustomTextfield(
+              CustomTextfield(
+                controller: TextEditingController(),
                 obscureText: true,
                 hintText: 'Enter Password',
                 icon: Icons.lock,

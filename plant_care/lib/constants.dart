@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 
 class Constants {
@@ -7,8 +6,9 @@ class Constants {
   static var blackColor = Colors.black54;
 
   //Onboarding texts
-  static var titleOne = "Learn more about plants";
-  static var descriptionOne = "Read how to care for plants in our rich plants guide.";
-  static var titleThree = "Plant a tree, green the Earth";
-  static var descriptionThree = "Find almost all types of plants that you like here.";
+  static var titleOne = " تعرف على المزيد عن النباتات في تطبيقنا القلب الاخضر";
+  static var descriptionOne =
+      "اقرأ كيفية العناية بالنباتات في دليلنا الغني بالمعلومات عن النباتات.";
+  static var titleThree = "ازرع شجرة وزيّن الأرض بالخضرة";
+  static var descriptionThree = "اعثر على أنواع النباتات التي تحبها هنا.";
 }

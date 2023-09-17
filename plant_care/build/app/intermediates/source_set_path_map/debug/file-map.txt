@@ -23,3 +23,4 @@ com.example.plant_care.app-mergeDebugResources-21 /home/roaa/Documents/roaa_work
 com.example.plant_care.app-merged_res-22 /home/roaa/Documents/roaa_workspace/green_heart/plant_care/build/app/intermediates/merged_res/debug
 com.example.plant_care.app-packaged_res-23 /home/roaa/Documents/roaa_workspace/green_heart/plant_care/build/flutter_plugin_android_lifecycle/intermediates/packaged_res/debug
 com.example.plant_care.app-packaged_res-24 /home/roaa/Documents/roaa_workspace/green_heart/plant_care/build/image_picker_android/intermediates/packaged_res/debug
+com.example.plant_care.app-packaged_res-25 /home/roaa/Documents/roaa_workspace/green_heart/plant_care/build/path_provider_android/intermediates/packaged_res/debug
